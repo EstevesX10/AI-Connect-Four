@@ -1,4 +1,4 @@
-name: Connect4
+name: Connect_4
 channels:
   - conda-forge
   - defaults
