@@ -31,5 +31,5 @@ DARK_GREEN = (0, 153, 76)
 
 # Defining a Array with the Piece's Colors [Tuple: (BORDER, INNER CIRCLE)]
 PIECES_COLORS = [(DARK_BLUE, BLUE),        # Empty Pieces
-                    (DARK_RED, RED),          # Player 1
-                    (DARK_GREEN, GREEN)]      # Player 2
+                (DARK_RED, RED),          # Player 1
+                (DARK_GREEN, GREEN)]      # Player 2
