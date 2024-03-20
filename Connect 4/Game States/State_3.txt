@@ -2,5 +2,5 @@
 -------
 -------
 O-XX---
-OXOX--
-XXOOXO
+OXOX---
+XXOOXO-
