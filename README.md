@@ -8,7 +8,6 @@
 </p>
 
 ## Project Overview
----
 `Connect Four` is a **two-player strategy game** similar to tic-tac-toe. It is played using 42 tokens (21 red & 21 black) inside a grid of **7 columns by 6 rows** where both players take **turns**
 
 A `player's move` consists of dropping one of his tokens into a column of his choice where it falls until it hits the bottom or the top token in that column. In addition, if the chosen column is **already full** then the player must choose another one.
