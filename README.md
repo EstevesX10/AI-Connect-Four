@@ -39,7 +39,9 @@ A `player's move` consists of dropping one of his tokens into a column of his ch
 A `player wins` by creating an arrangement in which at least `four of his tokens` are aligned in a **row**, **column** or **diagonal** (**ascending or descending**). Therefore if the **board is full with tokens** whilst not having formed any kind of arrangement, then the match results in a **Tie** between both players.
 
 ## Project Development (Dependencies & Execution)
-As a request from our professors this project was developed using a `Notebook`. Therefore if you're looking forward to test it out yourself, keep in mind to either use a **[Anaconda Distribution](https://www.anaconda.com/)** or a 3rd party software that helps you inspect and execute it.
+As a request from our professors this project was developed using a `Notebook`. Therefore if you're looking forward to test it out yourself, keep in mind to either use a **[Anaconda Distribution](https://www.anaconda.com/)** or a 3rd party software that helps you inspect and execute it. 
+
+Therefore, for more information regarding the **Virtual Environment** used in Anaconda, consider analysing the [DEPENDENCIES.md](https://github.com/EstevesX10/Connect-4/blob/main/DEPENDENCIES.md) file where a simple guide is provided.
 
 ## Authorship
 
