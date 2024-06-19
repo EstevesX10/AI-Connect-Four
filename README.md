@@ -4,7 +4,7 @@
 </div>
 
 <p align="center" width="100%">
-    <img src="./Connect 4/Assets/ConnectFour_README_Wallpaper.jpg" width="60%" height="60%" />
+    <img src="./Connect 4/Assets/ConnectFourGame.png" width="60%" height="60%" />
 </p>
 
 <div align="center">
