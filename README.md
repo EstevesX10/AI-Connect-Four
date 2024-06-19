@@ -1,11 +1,35 @@
 <div align="center">
 
-# AI | Connect-4
+# AI | Connect-4 [Python]
 </div>
 
 <p align="center" width="100%">
     <img src="./Connect 4/Assets/ConnectFour_README_Wallpaper.jpg" width="60%" height="60%" />
 </p>
+
+<div align="center">
+    <a>
+        <img src="https://img.shields.io/badge/Made%20with-Jupyter-87CEFA?style=for-the-badge&logo=Jupyter&logoColor=87CEFA">
+    </a>
+</div>
+
+<br/>
+
+<div align="center">
+    <a href="https://github.com/EstevesX10/Connect-4/blob/main/LICENSE">
+        <img src="https://img.shields.io/github/license/EstevesX10/AI-Decision-Trees-ID3?style=flat&logo=gitbook&logoColor=87CEFA&label=License&color=87CEFA">
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/github/repo-size/EstevesX10/AI-Decision-Trees-ID3?style=flat&logo=googlecloudstorage&logoColor=87CEFA&logoSize=auto&label=Repository%20Size&color=87CEFA">
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/github/stars/EstevesX10/AI-Decision-Trees-ID3?style=flat&logo=adafruit&logoColor=87CEFA&logoSize=auto&label=Stars&color=87CEFA">
+    </a>
+    <a href="https://github.com/EstevesX10/Connect-4/blob/main/DEPENDENCIES.md">
+        <img src="https://img.shields.io/badge/Dependencies-DEPENDENCIES.md-white?style=flat&logo=anaconda&logoColor=87CEFA&logoSize=auto&color=87CEFA"> 
+    </a>
+</div>
+
 
 ## Project Overview
 `Connect Four` is a **two-player strategy game** similar to tic-tac-toe. It is played using 42 tokens (21 red & 21 black) inside a grid of `7 columns by 6 rows` where both players take **turns**
