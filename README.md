@@ -1,6 +1,6 @@
 <div align="center">
 
-# AI | Connect-4 [Python]
+# AI | Connect Four [Python]
 </div>
 
 <p align="center" width="100%">
