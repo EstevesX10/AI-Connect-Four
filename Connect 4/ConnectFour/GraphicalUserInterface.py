@@ -17,7 +17,7 @@ from .Algorithms import (A_Star_Search, MiniMax, MCTS)
 # can be pressed and trigger some other functions
 
 class Image:
-    def __init__(self, image, x, y, scale):
+    def __init__(self, image:pygame.Surface, x:int, y:int, scale:float) -> None:
         self.Height = image.get_height() # Defining Image's Height
         self.Width = image.get_width() # Defining Image's Width
         self.scale = scale # Defining a Scale to which the sprite will be resized
@@ -25,11 +25,11 @@ class Image:
         self.rect = self.image.get_rect() # Creating a Rectangle for the Image's Sprite
         self.rect.topleft = (x,y) # Defining the Position where the image must be placed at
 
-    def Display(self, screen):
+    def Display(self, screen:pygame.Surface) -> None:
         screen.blit(self.image, (self.rect.x, self.rect.y)) # Displaying the Image into the given Screen
 
 class Button:
-    def __init__(self, image, x, y, scale):
+    def __init__(self, image:pygame.Surface, x:int, y:int, scale:float) -> None:
         self.Height = image.get_height() # Defining Button's Height
         self.Width = image.get_width() # Defining Button's Width
         self.scale = scale # Defining a Scale to which the sprite will be resized
@@ -41,8 +41,7 @@ class Button:
         self.FirstContact = 0 # State of the Mouse when he fisrtly approached a button's region
         self.NumContacts = 0 # Total contacts the mouse has made with the button
 
-
-    def Action(self, Tela):
+    def Action(self, Tela:pygame.Surface):
         Action = False # Flag to determine if the button has been activated
         Mouse_Pos = pygame.mouse.get_pos() # Gets Mouse Position
 
@@ -126,18 +125,18 @@ class Connect_Four_GUI_APP:
         # return next node
         return final_node
     
-    def A_Star(self, heuristic=heuristic_suggested) -> TreeNode:
+    def A_Star(self, heuristic:Callable[[TreeNode], int]=heuristic_suggested) -> TreeNode:
         # Generate the Next_Node
         new_node = self.A_Star_action(heuristic)
     
         # Returns the next node
         return new_node
 
-    def minimax(self, heuristic:Callable[[TreeNode], int], depth_search=5) -> TreeNode:
+    def minimax(self, heuristic:Callable[[TreeNode], int]=heuristic_suggested, depth_search:int=5) -> TreeNode:
         # Executing a MiniMax move with both heuristics and depth search given
         return MiniMax(self.current_node, heuristic, depth_search)
 
-    def mcts(self, heuristic:Callable[[TreeNode], int]) -> TreeNode:
+    def mcts(self, heuristic:Callable[[TreeNode], int]=heuristic_suggested) -> TreeNode:
         # Executing the Monte Carlo Tree Search Algorithm
         return MCTS(self.current_node, heuristic)
 
@@ -193,7 +192,10 @@ class Connect_Four_GUI_APP:
         # Drawing the Current Board Elements
         self.draw_board(screen)
     
-    def run_game(self, screen:pygame.Surface, player1:int, player2:int, heuristic_1=None, heuristic_2=None) -> int:
+    def run_game(self, screen:pygame.Surface,
+                 player1:Callable[[TreeNode], TreeNode], player2:Callable[[TreeNode], TreeNode],
+                 heuristic_1:Callable[[TreeNode], int]=None, heuristic_2:Callable[[TreeNode], int]=None) -> int:
+        
         # Reseting the game
         self.current_node = TreeNode(state=Connect_Four_State())
 
