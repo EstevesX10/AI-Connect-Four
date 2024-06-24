@@ -1,13 +1,16 @@
 # This file contains functions used to properly evaluate how the algorithms performed within the Connect Four Game
 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from time import (time)
 import tracemalloc
+from .TreeNode import (TreeNode)
 from .Heuristics import (heuristic_suggested)
+from typing import (Callable)
 
-def Analyse_Algorithm_Time_Space(algorithm, *args, **kwargs):
+def Analyse_Algorithm_Time_Space(algorithm:Callable[[TreeNode], TreeNode], *args, **kwargs) -> tuple:
     n_itr = 10
     # Initializing the measured time and space
     times = []
@@ -42,7 +45,7 @@ def Analyse_Algorithm_Time_Space(algorithm, *args, **kwargs):
     
     return (node, times, spaces)
 
-def Display_Results(df, X, Y, HUE, Title):
+def Display_Results(df:pd.DataFrame, X:np.ndarray, Y:np.ndarray, HUE:str, Title:str) -> None:
     # Setting theme for the Chart
     sns.set_theme(style='dark',rc={'axes.facecolor':'White', 'figure.facecolor':'White'})
     fig, ax1 = plt.subplots(figsize=(10,5))
@@ -57,7 +60,7 @@ def Display_Results(df, X, Y, HUE, Title):
     # Showing the Graph
     plt.show()
 
-def Analyse_Game_State(node, Analysis_Title, Algorithms):
+def Analyse_Game_State(node:TreeNode, Analysis_Title:str, Algorithms:list[Callable[[TreeNode], int]]) -> list:
     Result_Nodes = []
     data = []
 

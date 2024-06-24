@@ -13,7 +13,7 @@ class Connect_Four_Terminal_APP:
         self.menu = "Main_Menu"
 
     """ Player & Algorithms """
-    def player(self, show=True):
+    def player(self, show:bool=True) -> TreeNode:
         # Printing current board configuration
         print(f"\n  CURRENT BOARD \n{self.current_node.state}")
         
@@ -25,7 +25,7 @@ class Connect_Four_Terminal_APP:
     
         return new_node
 
-    def random(self, show=True):
+    def random(self, show:bool=True) -> TreeNode:
         # Randomizing a col to play at
         ncol_idx = rd.randrange(0, len(self.current_node.state.actions))
         ncol = self.current_node.state.actions[ncol_idx]
@@ -40,14 +40,14 @@ class Connect_Four_Terminal_APP:
 
         return new_node
 
-    def A_Star_action(self, heuristic):
+    def A_Star_action(self, heuristic:Callable[[TreeNode], int]) -> TreeNode:
         # Getting the Final Node after using the A* Search
         final_node = A_Star_Search(self.current_node, heuristic)
         
         # return next node
         return final_node
     
-    def A_Star(self, heuristic=heuristic_suggested, show=True):
+    def A_Star(self, heuristic:Callable[[TreeNode], int]=heuristic_suggested, show:bool=True) -> TreeNode:
         if (show):
             # Printing current board configuration
             print(f"\n  CURRENT BOARD \n{self.current_node.state}")
@@ -59,16 +59,19 @@ class Connect_Four_Terminal_APP:
         # Returns the next node
         return new_node
 
-    def minimax(self, heuristic, depth_search=5, show=True):
+    def minimax(self, heuristic:Callable[[TreeNode], int]=heuristic_suggested, depth_search:int=5, show:bool=True) -> TreeNode:
         # Executing a MiniMax move with both heuristics and depth search given
         return MiniMax(self.current_node, heuristic, depth_search)
 
-    def mcts(self, heuristic=heuristic_suggested, show=True):
+    def mcts(self, heuristic:Callable[[TreeNode], int]=heuristic_suggested, show:bool=True) -> TreeNode:
         # Executing the Monte Carlo Tree Search Algorithm
         return MCTS(self.current_node, heuristic)
     
     """ GAME LOOP """
-    def run_game(self, player1, player2, heuristic_1=None, heuristic_2=None, show_output=True):
+    def run_game(self, player1:Callable[[TreeNode], TreeNode], player2:Callable[[TreeNode], TreeNode],
+                 heuristic_1:Callable[[TreeNode], int]=None, heuristic_2:Callable[[TreeNode], int]=None,
+                 show_output:bool=True) -> int:
+        
         clear_output() # Clearing the Cell's Output
         
         self.current_node = TreeNode(state=Connect_Four_State()) # Reset the Board
@@ -112,7 +115,11 @@ class Connect_Four_Terminal_APP:
         
         return self.current_node.state.winner
 
-    def run_multiple_games(self, n_games, player1, player2, heuristic_1=None, heuristic_2=None, show_output=True):
+    def run_multiple_games(self, n_games:int,
+                           player1:Callable[[TreeNode], TreeNode], player2:Callable[[TreeNode], TreeNode],
+                           heuristic_1:Callable[[TreeNode], int]=None, heuristic_2:Callable[[TreeNode], int]=None,
+                           show_output:bool=True) -> list:
+        
         # Creating a list to store the results
         results = [0, 0, 0]
         for _ in range(n_games):
@@ -123,7 +130,7 @@ class Connect_Four_Terminal_APP:
         # Returning the results
         return results
 
-    def show_multiple_games_results(self, player1_name, player2_name, results, n_games):
+    def show_multiple_games_results(self, player1_name:str, player2_name:str, results:list, n_games:int) -> None:
         print("#-------------------------#")
         print("|   # Results Analysis    |")
         print("#-------------------------#\n")
@@ -141,7 +148,7 @@ class Connect_Four_Terminal_APP:
         print(f"| TOTAL MATCHES: {n_games} |")
         print(formated_line)
         
-    def to_continue(self):
+    def to_continue(self) -> bool:
         choice = input("\nWould you like to Continue? [y/n] : ")
         while (choice.lower() != "y" and choice.lower() != "n"):
             choice = input("\nWould you like to Continue? [y/n] : ")
@@ -149,7 +156,7 @@ class Connect_Four_Terminal_APP:
             return True
         return False
 
-    def menus_base_function(self, print_function, lower_value, higher_value, multiple_values=False, back_item=5):
+    def menus_base_function(self, print_function:Callable, lower_value:int, higher_value:int, multiple_values:bool=False, back_item:int=5) -> int:
         clear_output()
         print_function()
         if (multiple_values):
@@ -167,7 +174,7 @@ class Connect_Four_Terminal_APP:
                 return self.menus_base_function(print_function, lower_value, higher_value)
             return option
     
-    def print_main_menu(self):
+    def print_main_menu(self) -> None:
         print("# --------------------------------- #")
         print("|             MAIN MENU             |")
         print("# --------------------------------- #")
@@ -176,10 +183,10 @@ class Connect_Four_Terminal_APP:
         print("| 0 - EXIT                          |")
         print("# --------------------------------- #")
         
-    def main_menu(self):
+    def main_menu(self) -> int:
         return self.menus_base_function(print_function=self.print_main_menu, lower_value=0, higher_value=1)
 
-    def print_player_vs_algorithms(self):
+    def print_player_vs_algorithms(self) -> None:
         print("# --------------------------------- #")
         print("|       CHOOSE YOUR OPPONENT        |")
         print("# --------------------------------- #")
@@ -193,10 +200,10 @@ class Connect_Four_Terminal_APP:
         print("| 0 - EXIT                          |")
         print("# --------------------------------- #")
     
-    def player_vs_algorithms(self):
+    def player_vs_algorithms(self) -> int:
         return self.menus_base_function(print_function=self.print_player_vs_algorithms, lower_value=0, higher_value=5)
     
-    def run(self):
+    def run(self) -> None:
         self.menu = "Main_Menu"
         
         while self.menu != "EXIT":
